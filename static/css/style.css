@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --bg: #fef6e4;
+  --card: #fff;
+  --text: #001858;
+  --add: #8bd3dd;
+  --view: #f582ae;
+  --edit: #fcbf49;
+  --del: #e63946;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  padding: 32px;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* 👇 BLOQUE AÑADIDO PARA MOSTRAR EL LOGO */
+.logo {
+  width: 60px;
+  height: auto;
+  object-fit: contain;
+}
+/* ☝️ FIN BLOQUE AÑADIDO */
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  grid-column: span 2;
+  font-weight: 600;
+  color: var(--text);
+}
+
+input, textarea, select {
+  grid-column: span 2;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: #f3d2c1;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.buttons {
+  grid-column: span 2;
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.add {
+  background: var(--add);
+}
+
+.view {
+  background: var(--view);
+}
+
+.edit {
+  background: var(--edit);
+}
+
+.delete {
+  background: var(--del);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

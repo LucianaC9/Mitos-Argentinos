@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <header><h1>Editar Mito</h1></header>
+  <form class="form-grid" action="{{ url_for('update_mito', id=mito.id) }}" method="post">
+    <label>Nombre del Mito</label>
+    <input name="nombre" value="{{ mito.nombre }}" required>
+    <label>Descripción</label>
+    <textarea name="descripcion" rows="3">{{ mito.descripcion }}</textarea>
+    <label>Región</label>
+    <select name="region">{% for r in regiones %}<option value="{{r.id}}" {% if r.id==mito.region_id %}selected{% endif %}>{{r.nombre}}</option>{% endfor %}</select>
+    <label>Tipo</label>
+    <select name="tipo">{% for t in tipos %}<option value="{{t.id}}" {% if t.id==mito.tipo_id %}selected{% endif %}>{{t.nombre}}</option>{% endfor %}</select>
+    <label>URL o ruta de imagen</label>
+    <input name="imagen" value="{{ mito.imagen }}">
+    <div class="buttons">
+      <button class="btn edit" type="submit">Guardar</button>
+      <a class="btn view" href="{{ url_for('list_mitos') }}">Volver</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

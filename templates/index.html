@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <header>
+    <div class="logo-title">
+      <img class="logo" src="{{ url_for('static', filename='img/logoargentina.png') }}" alt="Mapa">
+      <h1>Catálogo de Mitos Argentinos</h1>
+    </div>
+  </header>
+  <form action="{{ url_for('add_mito') }}" method="post" class="form-grid">
+    <label>Nombre del Mito</label>
+    <input name="nombre" required>
+    
+    <label>Descripción</label>
+    <textarea name="descripcion" rows="3" required></textarea>
+    
+    <label>Región</label>
+    <select name="region">
+      {% for r in regiones %}
+        <option value="{{ r.id }}">{{ r.nombre }}</option>
+      {% endfor %}
+    </select>
+    
+    <label>Tipo</label>
+    <select name="tipo">
+      {% for t in tipos %}
+        <option value="{{ t.id }}">{{ t.nombre }}</option>
+      {% endfor %}
+    </select>
+    
+    <label>URL o ruta de imagen</label>
+    <input name="imagen">
+    
+    <div class="buttons">
+      <button class="btn add" type="submit">+ Agregar Mito</button>
+      <a class="btn view" href="{{ url_for('list_mitos') }}">✔ Ver Mitos</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

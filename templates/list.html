@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <header>
+    <div class="logo-title">
+      <img class="logo" src="{{ url_for('static', filename='img/logoargentina.png') }}" alt="Mapa">
+      <h1>Listado de Mitos Registrados</h1>
+    </div>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Región</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+        <th>Imagen</th> <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in mitos %}
+      <tr>
+        <td>{{ m.id }}</td>
+        <td>{{ m.nombre }}</td>
+        <td>{{ m.region.nombre }}</td>
+        <td>{{ m.tipo.nombre }}</td>
+        <td>{{ m.recorte_descripcion() }}</td>
+        
+        <td>
+          {% if m.imagen %}
+            <img src="{{ m.imagen }}" alt="Imagen de {{ m.nombre }}" style="width: 80px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          {% else %}
+            <span style="color: #888; font-size: 0.9em;">Sin imagen</span>
+          {% endif %}
+        </td>
+
+        <td class="actions">
+          <a class="btn edit" href="{{ url_for('edit_mito', id=m.id) }}">Editar</a>
+          <form action="{{ url_for('delete_mito', id=m.id) }}" method="post" style="display:inline;">
+            <button class="btn delete" type="submit">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="buttons">
+    <a class="btn add" href="{{ url_for('index') }}">+ Agregar Mito</a>
+  </div>
+</div>
+{% endblock %}

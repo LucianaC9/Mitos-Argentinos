@@ -1,0 +1,8 @@
+## Tecnologías utilizadas 🛠
+
+- Python 3.12.3
+- Flask
+- Flask-SQLAlchemy
+- SQLite
+- HTML5 + CSS3
+- Diseño UI personalizado
